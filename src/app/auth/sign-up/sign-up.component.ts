@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SignupRequestPayload } from './sign-up-request.payload';
+import { AuthService } from '../shared/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,7 +14,13 @@ export class SignUpComponent implements OnInit {
   // Déclarations d'une variable de type FormGroup qui sera le point de départ pour gérer la validation du formulaire
   signupForm: FormGroup;
 
-  constructor() { }
+  constructor(private authService: AuthService) { 
+    this.signupRequestPayload = {
+      username: '',
+      email: '',
+      password: ''
+    };
+  }
 
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -27,6 +34,12 @@ export class SignUpComponent implements OnInit {
     this.signupRequestPayload.username = this.signupForm.get('username').value;
     this.signupRequestPayload.email = this.signupForm.get('email').value;
     this.signupRequestPayload.password = this.signupForm.get('password').value;
+
+    this.authService.signup(this.signupRequestPayload).subscribe(() => {
+      console.log('Signup Successful');
+    }, () => {
+      console.log('Signup Failed');
+    });
   }
 
 }
