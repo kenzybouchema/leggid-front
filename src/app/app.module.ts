@@ -8,6 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
     HeaderComponent
   ],
   imports: [
+    NgxWebstorageModule.forRoot(),
     HttpClientModule,
     AuthModule,
     BrowserModule,
