@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SignupRequestPayload } from './sign-up-request.payload';
 import { AuthService } from '../shared/auth.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +16,7 @@ export class SignUpComponent implements OnInit {
   // Déclarations d'une variable de type FormGroup qui sera le point de départ pour gérer la validation du formulaire
   signupForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router){
+  constructor(private authService: AuthService, private router: Router,  private toastr: ToastrService) {
     this.signupRequestPayload = {
       username: '',
       email: '',
@@ -40,7 +41,7 @@ export class SignUpComponent implements OnInit {
       // On navigue vers le composant de login en lui faisant passer en paramètre un attribut "registred"  avec la valeur "true"
       this.router.navigate(['/login'], { queryParams: { registered: 'true' } });
     }, () => {
-      console.log('Signup Failed');
+      this.toastr.error('Registration Failed! Please try again');
     });
   }
 
