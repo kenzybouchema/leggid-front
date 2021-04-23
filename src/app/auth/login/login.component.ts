@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.toastr.info('Login Success');
       },
       error => {
-        this.toastr.error('Login failed');
+        this.toastr.error('User does\'nt exist or isn\'t enabled');
       }
     );
   }
