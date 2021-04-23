@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { LoginRequestPayload } from './login-request.payload';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginRequestPayload: LoginRequestPayload;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private toastr: ToastrService) {
     this.loginRequestPayload = {
       username: '',
       password: ''
@@ -30,10 +31,14 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginRequestPayload.username = this.loginForm.get('username').value;
     this.loginRequestPayload.password = this.loginForm.get('password').value;
-
-    this.authService.login(this.loginRequestPayload).subscribe(data => {
-      console.log('Login successful');
-    });
+    this.authService.login(this.loginRequestPayload).subscribe(
+      next => {
+        this.toastr.info('Login Success');
+      },
+      error => {
+        this.toastr.error('Login failed');
+      }
+    );
   }
 
 }
