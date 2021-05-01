@@ -6,6 +6,7 @@ import { LoginRequestPayload } from '../login/login-request.payload';
 import { LoginResponse } from '../login/login-response.payload';
 import { map } from 'rxjs/operators';
 import { LocalStorageService } from 'ngx-webstorage';
+import {urls} from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +18,11 @@ export class AuthService {
 
   signup(signupRequestPayload: SignupRequestPayload): Observable<any> {
     // On consomme l'API REST avec un POST depuis le client HTTP avec la 'signupRequestPayload'
-    return this.http.post('http://localhost:8080/api/auth/signup', signupRequestPayload);
+    return this.http.post(urls.signup, signupRequestPayload);
   }
 
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
-    return this.http.post<LoginResponse>('http://localhost:8080/api/auth/login', loginRequestPayload)
+    return this.http.post<LoginResponse>(urls.login, loginRequestPayload)
       .pipe(map(data => {
         this.localStorage.store('authenticationToken', data.authenticationToken);
         this.localStorage.store('username', data.username);

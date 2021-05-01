@@ -14,3 +14,13 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+export const localhostUrl = {
+  localHost : 'http://localhost:8080'
+};
+
+export const urls = {
+  signup : localhostUrl.localHost + '/api/auth/signup',
+  login : localhostUrl.localHost + '/api/auth/login',
+  refreshToken : localhostUrl.localHost + '/api/auth/refresh/token'
+};
