@@ -30,4 +30,27 @@ export class AuthService {
         return true;
       }));
   }
+
+  /*
+  *  Lire les informations depuis le local Storage:
+  *  Lors du login ces informations sont stockées dans le local storage.
+  *  Les méthodes ci-dessous permettent de les lires.
+  * */
+
+  getJwtToken() {
+    return this.localStorage.retrieve('authenticationToken');
+  }
+
+  getRefreshToken() {
+    return this.localStorage.retrieve('refreshToken');
+  }
+
+  getUserName() {
+    return this.localStorage.retrieve('username');
+  }
+
+  getExpirationTime() {
+    return this.localStorage.retrieve('expiresAt');
+  }
+
 }
