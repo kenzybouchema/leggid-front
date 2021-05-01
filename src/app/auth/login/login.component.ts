@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   loginRequestPayload: LoginRequestPayload;
+  isError: boolean;
 
   constructor(private authService: AuthService, private toastr: ToastrService) {
     this.loginRequestPayload = {
@@ -34,9 +35,11 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginRequestPayload).subscribe(
       next => {
         this.toastr.info('Login Success');
+        this.isError = false;
       },
       error => {
         this.toastr.error('User does\'nt exist or isn\'t enabled');
+        this.isError = true;
       }
     );
   }
