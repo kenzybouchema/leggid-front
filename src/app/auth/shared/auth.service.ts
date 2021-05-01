@@ -32,6 +32,18 @@ export class AuthService {
       }));
   }
 
+  refreshToken() {
+    const refreshTokenPayload = {
+      refreshToken: this.getRefreshToken(),
+      username: this.getUserName()
+    }
+    return this.http.post<LoginResponse>(urls.refreshToken, refreshTokenPayload)
+      .pipe(map(response => {
+        this.localStorage.store('authenticationToken', response.authenticationToken);
+        this.localStorage.store('expiresAt', response.expiresAt);
+      }));
+  }
+
   /*
   *  Lire les informations depuis le local Storage:
   *  Lors du login ces informations sont stockées dans le local storage.
