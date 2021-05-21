@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SignupRequestPayload } from '../sign-up/sign-up-request.payload';
-import { Observable } from 'rxjs';
+import {observable, Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LoginRequestPayload } from '../login/login-request.payload';
 import { LoginResponse } from '../login/login-response.payload';
@@ -18,7 +18,7 @@ export class AuthService {
 
   signup(signupRequestPayload: SignupRequestPayload): Observable<any> {
     // On consomme l'API REST avec un POST depuis le client HTTP avec la 'signupRequestPayload'
-    return this.http.post(urls.signup, signupRequestPayload);
+    return this.http.post(urls.signup, signupRequestPayload, { responseType: 'text' });
   }
 
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
