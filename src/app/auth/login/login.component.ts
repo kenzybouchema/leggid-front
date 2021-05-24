@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { LoginRequestPayload } from './login-request.payload';
 import {ToastrService} from 'ngx-toastr';
+import { Router, ActivatedRoute } from '@angular/router';
+import {paths} from "../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,10 @@ export class LoginComponent implements OnInit {
   loginRequestPayload: LoginRequestPayload;
   isError: boolean;
 
-  constructor(private authService: AuthService, private toastr: ToastrService) {
+  constructor(private authService: AuthService,
+              private toastr: ToastrService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router,) {
     this.loginRequestPayload = {
       username: '',
       password: ''
@@ -34,6 +39,7 @@ export class LoginComponent implements OnInit {
     this.loginRequestPayload.password = this.loginForm.get('password').value;
     this.authService.login(this.loginRequestPayload).subscribe(
       next => {
+        this.router.navigateByUrl(paths.home)
         this.toastr.info('Login Success');
         this.isError = false;
       },
