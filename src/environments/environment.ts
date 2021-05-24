@@ -20,6 +20,7 @@ export const localhostUrl = {
 };
 
 export const urls = {
+  subleggid : localhostUrl.localHost + '/api/subleggid',
   signup : localhostUrl.localHost + '/api/auth/signup',
   login : localhostUrl.localHost + '/api/auth/login',
   refreshToken : localhostUrl.localHost + '/api/auth/refresh/token',
