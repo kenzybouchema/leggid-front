@@ -4,7 +4,7 @@ import {observable, Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LoginRequestPayload } from '../login/login-request.payload';
 import { LoginResponse } from '../login/login-response.payload';
-import { map } from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import { LocalStorageService } from 'ngx-webstorage';
 import {urls} from '../../../environments/environment';
 
@@ -21,14 +21,15 @@ export class AuthService {
     return this.http.post(urls.signup, signupRequestPayload, { responseType: 'text' });
   }
 
-  login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
+  login(loginRequestPayload: LoginRequestPayload): Observable<LoginResponse> {
+    // On ne retourne plus un booléen mais le bon type de réponse:
     return this.http.post<LoginResponse>(urls.login, loginRequestPayload)
-      .pipe(map(data => {
+      // Utilisation de l'opérateur tap traite les données dans le pipe sans modifier la donnée en entrée
+      .pipe(tap(data => {
         this.localStorage.store('authenticationToken', data.authenticationToken);
         this.localStorage.store('username', data.username);
         this.localStorage.store('refreshToken', data.refreshToken);
         this.localStorage.store('expiresAt', data.expiresAt);
-        return true;
       }));
   }
 
