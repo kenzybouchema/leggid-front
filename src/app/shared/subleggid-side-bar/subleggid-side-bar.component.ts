@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {SubleggidModel} from "../../subleggid/subleggid-model";
+import {SubleggidService} from "../../subleggid/subleggid.service";
 
 @Component({
   selector: 'app-subleggid-side-bar',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SubleggidSideBarComponent implements OnInit {
 
-  constructor() { }
+  subleggids: Array<SubleggidModel> = [];
+
+  constructor(private subleggidService: SubleggidService) { }
 
   ngOnInit(): void {
+    this.subleggidService.getAllSubleggids().subscribe(data => this.subleggids = data);
   }
 
 }
