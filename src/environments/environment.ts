@@ -22,5 +22,6 @@ export const localhostUrl = {
 export const urls = {
   signup : localhostUrl.localHost + '/api/auth/signup',
   login : localhostUrl.localHost + '/api/auth/login',
-  refreshToken : localhostUrl.localHost + '/api/auth/refresh/token'
+  refreshToken : localhostUrl.localHost + '/api/auth/refresh/token',
+  posts : localhostUrl.localHost + '/api/posts'
 };

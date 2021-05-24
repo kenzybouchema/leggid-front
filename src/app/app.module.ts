@@ -10,11 +10,15 @@ import { AuthModule } from './auth/auth.module';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+import { PostComponent } from './shared/post/post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent,
+    PostComponent
   ],
   imports: [
     BrowserAnimationsModule,
