@@ -19,10 +19,20 @@ export const localhostUrl = {
   localHost : 'http://localhost:8080'
 };
 
+export const paths = {
+  home: '',
+  subleggid: '/api/subleggid',
+  signup: '/api/auth/signup',
+  login: '/api/auth/login',
+  refreshToken:'/api/auth/refresh/token',
+  posts: '/api/posts'
+};
+
 export const urls = {
-  subleggid : localhostUrl.localHost + '/api/subleggid',
-  signup : localhostUrl.localHost + '/api/auth/signup',
-  login : localhostUrl.localHost + '/api/auth/login',
-  refreshToken : localhostUrl.localHost + '/api/auth/refresh/token',
-  posts : localhostUrl.localHost + '/api/posts'
+  home: localhostUrl.localHost + paths.home,
+  subleggid : localhostUrl.localHost + paths.subleggid,
+  signup : localhostUrl.localHost + paths.signup,
+  login : localhostUrl.localHost + paths.login,
+  refreshToken : localhostUrl.localHost + paths.refreshToken,
+  posts : localhostUrl.localHost + paths.posts
 };
