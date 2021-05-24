@@ -12,13 +12,19 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './shared/post/post.component';
+import { SubleggidSideBarComponent } from './shared/subleggid-side-bar/subleggid-side-bar.component';
+import {VoteButtonComponent} from './shared/vote-button/vote-button.component';
+import {SideBarComponent} from './shared/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    PostComponent
+    PostComponent,
+    VoteButtonComponent,
+    SideBarComponent,
+    SubleggidSideBarComponent
   ],
   imports: [
     BrowserAnimationsModule,
