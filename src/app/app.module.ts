@@ -15,6 +15,8 @@ import { PostComponent } from './shared/post/post.component';
 import { SubleggidSideBarComponent } from './shared/subleggid-side-bar/subleggid-side-bar.component';
 import {VoteButtonComponent} from './shared/vote-button/vote-button.component';
 import {SideBarComponent} from './shared/side-bar/side-bar.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {PostTileComponent} from "./shared/post-tile/post-tile.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import {SideBarComponent} from './shared/side-bar/side-bar.component';
     PostComponent,
     VoteButtonComponent,
     SideBarComponent,
-    SubleggidSideBarComponent
+    SubleggidSideBarComponent,
+    PostTileComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -34,7 +37,8 @@ import {SideBarComponent} from './shared/side-bar/side-bar.component';
     AuthModule,
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
