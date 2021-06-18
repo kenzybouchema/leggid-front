@@ -14,7 +14,10 @@ export class SubleggidSideBarComponent implements OnInit {
   constructor(private subleggidService: SubleggidService) { }
 
   ngOnInit(): void {
-    this.subleggidService.getAllSubleggids().subscribe(data => this.subleggids = data);
+    this.subleggidService.getAllSubleggids().subscribe(data => {
+        this.subleggids = data;
+      }
+    );
   }
 
 }
